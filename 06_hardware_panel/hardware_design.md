@@ -20,6 +20,50 @@ No hardware should be purchased until the controller choice and I/O voltage comp
 
 No GOOSE, Node-RED, MQTT, pfSense or virtual OT lab is included in this project.
 
+## Opta I/O Allocation
+
+The CODESYS Opta provides 8 analogue/digital inputs and 4 relay outputs.
+
+
+
+The first build deliberately stays within the 4 native relay outputs:
+
+
+
+| Output | Function |
+
+|---|---|
+
+| Q1 | Trip relay / load opening |
+
+| Q2 | Relay Healthy / watchdog |
+
+| Q3 | Pickup indication |
+
+| Q4 | Trip indication |
+
+
+
+The blocked indication is not assigned to an Opta output. It is implemented as a hardwired panel indication from the permissive/block selector switch. This avoids adding output modules and keeps the first build simple.
+
+
+
+Inputs:
+
+
+
+| Input | Function |
+
+|---|---|
+
+| I1 | Fault/Test pushbutton |
+
+| I2 | Reset pushbutton |
+
+| I3 | Permissive/Block switch |
+
+| I4 | Current sensor / analogue current signal |
+
 ## Control Voltage
 
 Panel/control side: 24 V DC.

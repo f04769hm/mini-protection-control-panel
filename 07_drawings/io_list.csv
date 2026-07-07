@@ -1,12 +1,12 @@
 signal_tag,signal_name,type,source,destination,voltage,normal_state,description
-DI_01,Fault/Test Pushbutton,Digital Input,Fault pushbutton,Controller input,24 V DC,Open,Simulates a fault/injection command for the demonstrator
-DI_02,Reset Pushbutton,Digital Input,Reset pushbutton,Controller input,24 V DC,Open,Resets latched trip condition
-DI_03,Permissive/Block Switch,Digital Input,Selector switch,Controller input,24 V DC,Closed permissive,Allows or blocks trip operation
-AI_01,Measured Current,Analogue/Input,Current sensor,Controller input,Low-voltage signal,N/A,Represents measured feeder current for overcurrent logic
-DO_01,Trip Relay Command,Digital Output,Controller output,Trip/interface relay,24 V DC,De-energised,Energises trip relay to open the load circuit
-DO_02,Pickup Indication,Digital Output,Controller output,Pickup lamp,24 V DC,Off,Indicates current above pickup setting
-DO_03,Trip Indication,Digital Output,Controller output,Trip lamp,24 V DC,Off,Indicates trip latch operated
-DO_04,Blocked Indication,Digital Output,Controller output,Blocked lamp,24 V DC,Off,Indicates permissive open or trip blocked
-DO_05,Relay Healthy / Watchdog,Digital Output,Controller heartbeat,Healthy interface relay,24 V DC,Energised,Normally energised healthy output; drops out/alarm if controller logic stops
+DI_01,Fault/Test Pushbutton,Digital Input,Fault pushbutton,Opta I1,24 V DC,Open,Simulates a fault/injection command for the demonstrator
+DI_02,Reset Pushbutton,Digital Input,Reset pushbutton,Opta I2,24 V DC,Open,Resets latched trip condition
+DI_03,Permissive/Block Switch,Digital Input,Selector switch,Opta I3,24 V DC,Closed permissive,Allows or blocks trip operation
+AI_01,Measured Current,Analogue Input,Current sensor,Opta I4,0-10 V or compatible signal,N/A,Represents measured feeder current for overcurrent logic
+DO_01,Trip Relay Command,Relay Output,Opta Q1,Trip relay/load circuit,24 V DC,De-energised,Energises trip relay or opens load circuit depending on final wiring
+DO_02,Relay Healthy / Watchdog,Relay Output,Opta Q2,Healthy relay/lamp circuit,24 V DC,Energised while healthy,Normally energised healthy output; drops out/alarm if controller logic stops
+DO_03,Pickup Indication,Relay Output,Opta Q3,Pickup lamp,24 V DC,Off,Indicates current above pickup setting
+DO_04,Trip Indication,Relay Output,Opta Q4,Trip lamp,24 V DC,Off,Indicates trip latch operated
 LAMP_01,Supply Healthy,Panel Indication,24 V supply,Supply healthy lamp,24 V DC,On,Shows fused 24 V control supply is present
-LOAD_01,Feeder Load,Controlled Load,24 V supply via trip contact,Load lamp/resistor,24 V DC,On,Represents feeder load opened by trip relay
+LAMP_02,Blocked Indication,Hardwired Panel Indication,Permissive/block switch auxiliary contact,Blocked lamp,24 V DC,Off,Lit by hardwired selector-switch contact when trip is blocked
+LOAD_01,Feeder Load,Controlled Load,24 V supply via trip relay contact,Load lamp/resistor,24 V DC,On,Represents feeder load opened by trip relay
