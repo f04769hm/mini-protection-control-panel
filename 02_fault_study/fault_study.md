@@ -81,12 +81,79 @@ I_fault ≈ 6.6 kA
 
 This shows that ignoring source impedance overestimates the available fault current. In this example, the infinite-bus approximation gives approximately 6.6 kA compared with approximately 4.4 kA when the assumed source fault level is included.
 
+## Feeder-End Fault Current Extension
+
+To estimate the downstream fault level at the end of the feeder, a representative 11 kV cable is added in series with the source and transformer impedance.
+
+Representative cable used:
+
+- Cable: 11 kV 3-core 185 mm² copper XLPE/SWA/PVC
+- Standard: BS6622 / IEC 60502-2
+- AC resistance at maximum temperature: 0.131 ohm/km
+- Inductive reactance: 0.09 ohm/km
+- Assumed feeder length: 2 km
+
+The cable impedance per km is:
+
+Z_cable_per_km = 0.131 + j0.09 ohm/km
+
+For a 2 km feeder:
+
+R_total = 0.131 × 2 = 0.262 ohm
+
+X_total = 0.09 × 2 = 0.180 ohm
+
+Magnitude of feeder impedance:
+
+|Z_feeder| = sqrt(R_total² + X_total²)
+
+|Z_feeder| = sqrt(0.262² + 0.180²)
+
+|Z_feeder| = 0.318 ohm
+
+Base impedance at 11 kV on 100 MVA base:
+
+Z_base = V_base² / S_base
+
+Z_base = 11,000² / 100,000,000
+
+Z_base = 1.21 ohm
+
+Feeder impedance in per-unit:
+
+Z_feeder_pu = 0.318 / 1.21
+
+Z_feeder_pu = 0.263 pu
+
+Total impedance to feeder end:
+
+Z_total_feeder_end = Z_source + Z_transformer + Z_feeder
+
+Z_total_feeder_end = 0.4 + 0.8 + 0.263
+
+Z_total_feeder_end = 1.463 pu
+
+Three-phase fault current at feeder end:
+
+I_fault_feeder_end = I_base / Z_total_feeder_end
+
+I_fault_feeder_end = 5,249 / 1.463
+
+I_fault_feeder_end = 3,588 A
+
+I_fault_feeder_end ≈ 3.6 kA
+
 ## Results Summary
 
 | Fault location | Total impedance | Fault current |
 |---|---:|---:|
 | 11 kV busbar, source + transformer | 1.2 pu | 4.4 kA |
+| 11 kV feeder end, with 2 km 185 mm² cable | 1.463 pu | 3.6 kA |
 | 11 kV busbar, transformer only / infinite bus | 0.8 pu | 6.6 kA |
+
+## Cable Data Source
+
+Cable resistance and reactance values are taken from a published technical specification for Nexans 11 kV 3-core 185 mm² BS6622 copper XLPE/SWA/PVC cable. The values used are 0.131 ohm/km AC resistance at maximum temperature and 0.09 ohm/km inductive reactance.
 
 ## Limitations
 
