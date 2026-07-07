@@ -32,7 +32,7 @@ VAR
     // Settings
     Pickup_A          : REAL := 300.0;
     TMS               : REAL := 0.10;
-    High_Set_A        : REAL := 5000.0;
+    High_Set_A        : REAL := 4000.0;
     High_Set_Delay_s  : REAL := 0.05;
 
     // IEC Standard Inverse constants
@@ -71,7 +71,8 @@ END_IF;
 // Scale 0-10 V to 0-6000 A simulated current
 // 0.5 V = 300 A pickup
 // 5.0 V = 3000 A = 10x pickup
-// 8.33 V approx = 5000 A high-set
+// 6.67 V approx = 4000 A high-set
+// 8.33 V approx = 5000 A above high-set test point
 Current_A := Current_Input_Limited_V * 600.0;
 
 

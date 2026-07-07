@@ -104,9 +104,9 @@ Current\_A = Input\_V × 600
 
 | 5.0 V | 3000 A | 10× pickup |
 
-| 8.33 V | 5000 A | High-set threshold |
+| 6.67 V | 4000 A | High-set threshold |
 
-
+| 8.33 V | 5000 A | Above high-set test point |
 
 The 0–10 V source must be verified with a multimeter before connection to Opta I4.
 

@@ -166,7 +166,8 @@ Input voltage	Simulated current
 
 &#x09;5.0 V		3000 A
 
-&#x09;8.33 V		5000 A
+&#x09;6.67 V             4000 A high-set
+&#x09;8.33 V             5000 A above high-set test point
 
 
 

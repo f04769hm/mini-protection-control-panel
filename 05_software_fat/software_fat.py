@@ -19,7 +19,11 @@ def simulate_constant_current(current_a, duration_s, relay, dt_s=0.001, permissi
     elapsed = 0.0
 
     while elapsed <= duration_s:
-        state = relay.process_sample(current_a=current_a, dt_s=dt_s, permissive=permissive)
+        state = relay.process_sample(
+            current_a=current_a,
+            dt_s=dt_s,
+            permissive=permissive,
+        )
 
         if state.trip:
             return {
@@ -47,7 +51,7 @@ def main():
     settings = RelaySettings(
         pickup_a=300.0,
         tms=0.10,
-        high_set_a=5000.0,
+        high_set_a=4000.0,
         high_set_delay_s=0.05,
     )
 
@@ -128,19 +132,43 @@ def main():
         "verdict": "PASS" if not result["tripped"] else "FAIL",
     })
 
-    # High-set test
+    # Below high-set short-duration test
+    # 3588 A is the calculated feeder-end fault current from the fault study.
+    # It is above pickup, so it can still trip by IDMT if held long enough.
+    # This test is intentionally short: it proves it does not operate the 50 high-set element.
     relay = OvercurrentRelay(settings)
     result = simulate_constant_current(
-        current_a=6000.0,
-        duration_s=0.2,
+        current_a=3588.0,
+        duration_s=0.06,
         relay=relay,
         permissive=True,
     )
 
     tests.append({
         "test_id": "FAT-006",
+        "description": "Feeder-end fault level should not cause instant high-set trip",
+        "injected_current_a": 3588.0,
+        "expected_result": "No high-set trip in short-duration test",
+        "expected_time_s": "",
+        "measured_time_s": "" if result["trip_time_s"] is None else f"{result['trip_time_s']:.3f}",
+        "trip_reason": result["trip_reason"],
+        "verdict": "PASS" if not result["tripped"] else "FAIL",
+    })
+
+    # High-set test
+    # 4500 A is above the revised 4000 A high-set and below the 0-10 V full-scale range.
+    relay = OvercurrentRelay(settings)
+    result = simulate_constant_current(
+        current_a=4500.0,
+        duration_s=0.2,
+        relay=relay,
+        permissive=True,
+    )
+
+    tests.append({
+        "test_id": "FAT-007",
         "description": "High-set overcurrent should trip after short delay",
-        "injected_current_a": 6000.0,
+        "injected_current_a": 4500.0,
         "expected_result": "Trip",
         "expected_time_s": f"{settings.high_set_delay_s:.3f}",
         "measured_time_s": "" if result["trip_time_s"] is None else f"{result['trip_time_s']:.3f}",
@@ -182,6 +210,14 @@ def main():
         report.write(f"| High-set | {settings.high_set_a:.0f} A |\n")
         report.write(f"| High-set delay | {settings.high_set_delay_s:.3f} s |\n\n")
 
+        report.write("## High-Set Revision Note\n\n")
+        report.write(
+            "The high-set threshold is set to 4000 A. This is above the calculated feeder-end fault level "
+            "of approximately 3588 A and below the calculated close-in/busbar-side finite-source fault level "
+            "of approximately 4374 A. The software FAT tests below include a short-duration 3588 A case to prove "
+            "that the high-set element does not operate below threshold, and a 4500 A case to prove high-set operation.\n\n"
+        )
+
         report.write("## Test Results\n\n")
         report.write("| Test ID | Description | Injected current | Expected | Expected time | Measured time | Trip reason | Verdict |\n")
         report.write("|---|---|---:|---|---:|---:|---|---|\n")
@@ -197,7 +233,9 @@ def main():
         report.write("\n## Limitations\n\n")
         report.write(
             "This is a software test harness for a demonstrator relay engine. "
-            "It is not calibrated secondary injection and does not test a certified protection relay, CT circuit, breaker trip circuit or real relay firmware.\n"
+            "It is not calibrated secondary injection and does not test a certified protection relay, CT circuit, "
+            "breaker trip circuit or real relay firmware. The current values are simulated values used to test "
+            "the simplified relay logic.\n"
         )
 
     print("Software FAT complete")

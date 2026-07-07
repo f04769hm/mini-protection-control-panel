@@ -4,4 +4,5 @@ FAT-002,2x pickup IDMT trip time,600.0,Trip,1.003,1.002,51 IDMT overcurrent,PASS
 FAT-003,5x pickup IDMT trip time,1500.0,Trip,0.428,0.427,51 IDMT overcurrent,PASS
 FAT-004,10x pickup IDMT trip time,3000.0,Trip,0.297,0.297,51 IDMT overcurrent,PASS
 FAT-005,Permissive open should block trip,1500.0,"No trip, blocked",,,,PASS
-FAT-006,High-set overcurrent should trip after short delay,6000.0,Trip,0.050,0.049,50 high-set overcurrent,PASS
+FAT-006,Feeder-end fault level should not cause instant high-set trip,3588.0,No high-set trip in short-duration test,,,,PASS
+FAT-007,High-set overcurrent should trip after short delay,4500.0,Trip,0.050,0.049,50 high-set overcurrent,PASS

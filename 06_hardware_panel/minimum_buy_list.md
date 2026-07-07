@@ -86,7 +86,8 @@ Therefore:
 
 | 5.0 V | 3000 A / 10x pickup |
 
-| 8.33 V | 5000 A high-set |
+| 6.67 V | 4000 A high-set |
+| 8.33 V | 5000 A above high-set test point |
 
 
 

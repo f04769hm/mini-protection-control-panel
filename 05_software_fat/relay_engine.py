@@ -24,7 +24,7 @@ def idmt_operate_time(current_a, pickup_a, tms, k=K_STANDARD_INVERSE, alpha=ALPH
 class RelaySettings:
     pickup_a: float = 300.0
     tms: float = 0.10
-    high_set_a: float = 5000.0
+    high_set_a: float = 4000.0
     high_set_delay_s: float = 0.05
     curve_name: str = "IEC Standard Inverse"
 
