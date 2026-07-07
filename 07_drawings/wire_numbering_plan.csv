@@ -1,0 +1,32 @@
+wire_no,from,to,signal,voltage,notes
+W001,24 V PSU +,F1 fuse input,+24 V DC,24 V DC,Incoming positive supply
+W002,F1 fuse output,+24 V distribution,+24 V fused,24 V DC,Fused positive distribution
+W003,24 V PSU -,0 V distribution,0 V DC,0 V DC,Common return
+W004,+24 V distribution,Supply Healthy lamp,+24 V fused,24 V DC,Supply indication feed
+W005,Supply Healthy lamp,0 V distribution,0 V DC,0 V DC,Supply indication return
+W006,+24 V distribution,Fault/Test pushbutton,+24 V fused,24 V DC,Fault PB feed
+W007,Fault/Test pushbutton,Opta I1,DI_01,24 V DC,Fault/Test input
+W008,+24 V distribution,Reset pushbutton,+24 V fused,24 V DC,Reset PB feed
+W009,Reset pushbutton,Opta I2,DI_02,24 V DC,Reset input
+W010,+24 V distribution,Permissive selector,+24 V fused,24 V DC,Permissive selector feed
+W011,Permissive selector,Opta I3,DI_03,24 V DC,Permissive input
+W012,0-10 V simulator +,Opta I4,AI_01,0-10 V,Simulated current input
+W013,0-10 V simulator 0 V,Opta analogue/common,0 V reference,0 V DC,Analogue reference
+W014,+24 V distribution,Opta Q1 common,+24 V fused,24 V DC,Trip output feed
+W015,Opta Q1 NO,Trip relay coil,DO_01,24 V DC,Trip relay command
+W016,Trip relay coil,0 V distribution,0 V DC,0 V DC,Trip relay return
+W017,+24 V distribution,Opta Q2 common,+24 V fused,24 V DC,Healthy output feed
+W018,Opta Q2 NO,Relay Healthy lamp/relay,DO_02,24 V DC,Healthy indication feed
+W019,Relay Healthy lamp/relay,0 V distribution,0 V DC,0 V DC,Healthy indication return
+W020,+24 V distribution,Opta Q3 common,+24 V fused,24 V DC,Pickup output feed
+W021,Opta Q3 NO,Pickup lamp,DO_03,24 V DC,Pickup lamp feed
+W022,Pickup lamp,0 V distribution,0 V DC,0 V DC,Pickup lamp return
+W023,+24 V distribution,Opta Q4 common,+24 V fused,24 V DC,Trip lamp output feed
+W024,Opta Q4 NO,Trip lamp,DO_04,24 V DC,Trip lamp feed
+W025,Trip lamp,0 V distribution,0 V DC,0 V DC,Trip lamp return
+W026,+24 V distribution,Blocked selector auxiliary,+24 V fused,24 V DC,Blocked lamp feed
+W027,Blocked selector auxiliary,Blocked lamp,LAMP_02,24 V DC,Blocked lamp switched feed
+W028,Blocked lamp,0 V distribution,0 V DC,0 V DC,Blocked lamp return
+W029,+24 V distribution,Trip relay load contact,+24 V fused,24 V DC,Load circuit feed
+W030,Trip relay load contact,Load lamp/resistor,LOAD_01,24 V DC,Switched load feed
+W031,Load lamp/resistor,0 V distribution,0 V DC,0 V DC,Load return
