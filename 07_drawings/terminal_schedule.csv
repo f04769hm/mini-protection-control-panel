@@ -1,0 +1,16 @@
+terminal,connection_from,connection_to,voltage_signal,description
+X1-01,24 V DC PSU +,Fuse input,+24 V DC,Incoming 24 V positive
+X1-02,Fuse output,+24 V distribution,+24 V DC,Fused 24 V panel supply
+X1-03,24 V DC PSU -,0 V distribution,0 V DC,Panel 0 V common
+X2-01,Fault/Test pushbutton,Opta I1,24 V digital input,Fault/test input
+X2-02,Reset pushbutton,Opta I2,24 V digital input,Reset input
+X2-03,Permissive selector,Opta I3,24 V digital input,Permissive/block input
+X2-04,Current simulation signal,Opta I4,0-10 V analogue,Simulated current input
+X3-01,Opta Q1,Trip circuit,Relay contact,Trip/load switching command
+X3-02,Opta Q2,Relay Healthy circuit,Relay contact,Normally energised healthy output
+X3-03,Opta Q3,Pickup lamp,Relay contact,Pickup indication
+X3-04,Opta Q4,Trip lamp,Relay contact,Trip indication
+X4-01,Fused 24 V,Supply Healthy lamp,+24 V DC,Supply healthy indication
+X4-02,Blocked selector contact,Blocked lamp,+24 V DC,Hardwired blocked indication
+X5-01,Trip relay/contact,Load lamp/resistor,+24 V DC,Controlled feeder load
+X5-02,Load lamp/resistor,0 V,0 V DC,Load return
