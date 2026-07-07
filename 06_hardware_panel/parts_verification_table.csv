@@ -1,6 +1,8 @@
 category,item,required,available,source,part_number_or_model,rating_to_check,status,notes
-Controller,CODESYS Opta,Yes,To confirm,Work/lab,,Exact model and I/O type,Pending,Temporary use is fine
+Controller,CODESYS Opta,Yes,To confirm,Work/lab,,Exact model supply voltage I/O type analogue input details,Pending,Temporary use is fine
 Power,24 V DC PSU,Yes,To confirm,Work/lab,,Output voltage and current rating,Pending,Must supply Opta lamps relays and load
+Protection,F1 fuse holder,Yes,To confirm,Work/lab/buy,,Suitable for 24 V DC,Pending,Fused 24 V distribution
+Protection,F1 fuse,Yes,To confirm,Work/lab/buy,,Current rating after load/coil currents known,Pending,Do not oversize
 Mounting,DIN rail,Yes,To confirm,Work/lab/offcut,,Length and mounting method,Pending,Offcut is fine
 Terminals,Terminal blocks,Yes,To confirm,Work/lab,,Voltage/current rating and quantity,Pending,Need enough for supply inputs outputs and load
 Terminals,End stops/markers,Useful,To confirm,Work/lab,,Compatibility with terminal blocks,Pending,Improves panel presentation
@@ -8,18 +10,22 @@ Wiring,Panel wire,Yes,To confirm,Work/lab,,Gauge and colour,Pending,Use sensible
 Wiring,Ferrules,Yes,To confirm,Work/lab,,Size match to wire,Pending,Use on stranded wire
 Wiring,Ferrule crimper,Useful,To confirm,Work/lab,,Suitable for ferrules,Pending,Borrow/use with permission
 Labelling,Wire labels/label maker,Useful,To confirm,Work/lab,,Label type,Pending,Match wire numbering plan
-Relays,Trip interface relay,Yes,To confirm,Work/lab,,24 V DC coil and contact rating,Pending,Must suit Opta output/contact scheme
-Relays,Healthy/watchdog interface relay,Yes,To confirm,Work/lab,,24 V DC coil and contact rating,Pending,Normally energised healthy concept
-Indication,Supply Healthy lamp,Yes,To confirm,Work/lab,,24 V DC,Pending,Hardwired from fused supply
-Indication,Relay Healthy lamp,Yes,To confirm,Work/lab,,24 V DC,Pending,Driven by healthy output/relay
-Indication,Pickup lamp,Yes,To confirm,Work/lab,,24 V DC,Pending,Driven by Opta Q3
-Indication,Trip lamp,Yes,To confirm,Work/lab,,24 V DC,Pending,Driven by Opta Q4
-Indication,Blocked lamp,Yes,To confirm,Work/lab,,24 V DC,Pending,Hardwired from selector contact
-Control,Fault/Test pushbutton,Yes,To buy/find,,Momentary NO contact,Pending,24 V panel type preferred
-Control,Reset pushbutton,Yes,To buy/find,,Momentary NO contact,Pending,24 V panel type preferred
-Control,Permissive selector switch,Yes,To buy/find,,Maintained 2-position contacts,Pending,Needs contact for Opta input and ideally blocked lamp
-Protection,Fuse holder,Yes,To buy/find,,Suitable for 24 V DC,Pending,For fused supply/load branch
-Protection,Fuse,Yes,To buy/find,,Current rating to be chosen,Pending,Choose after load current known
-Load,Load lamp or resistor,Yes,To confirm,Lab/buy,,24 V rating current power,Pending,Must not overheat
-Current simulation,0-10 V signal source,Yes,To buy/find,,Output limited to 0-10 V,Pending,Check with multimeter before Opta input
+Control,Fault/Test pushbutton,Yes,To confirm,Work/lab/buy,,Momentary NO contact suitable for 24 V,Pending,Opta I1
+Control,Reset pushbutton,Yes,To confirm,Work/lab/buy,,Momentary NO contact suitable for 24 V,Pending,Opta I2
+Control,Permissive selector switch,Yes,To confirm,Work/lab/buy,,Maintained 2-position selector,Pending,Must support PERMIT and BLOCK contacts
+Control,Selector PERMIT contact,Yes,To confirm,Part of selector,,NO or changeover contact suitable for 24 V,Pending,Feeds Opta I3 and Q1 common
+Control,Selector BLOCK contact,Yes,To confirm,Part of selector,,NC or changeover contact suitable for 24 V,Pending,Feeds hardwired Blocked lamp
+Relays,Trip interface relay,Yes,To confirm,Work/lab,,24 V DC coil and contact rating,Pending,Energised by Opta Q1
+Relays,Trip relay NC load contact,Yes,To confirm,Part of trip relay,,NC contact rating above load current,Pending,Load opens when trip relay energises
+Relays,Healthy/watchdog interface relay,Yes,To confirm,Work/lab,,24 V DC coil and contact rating,Pending,Energised by Opta Q2
+Relays,Healthy relay NO contact,Yes,To confirm,Part of healthy relay,,NO contact suitable for lamp current,Pending,Feeds Relay Healthy lamp
+Relays,Healthy relay NC contact,Yes,To confirm,Part of healthy relay,,NC contact suitable for lamp current,Pending,Feeds Unhealthy/Alarm lamp
+Indication,Supply Healthy lamp,Yes,To confirm,Work/lab,,24 V DC and lamp current,Pending,Hardwired from fused supply
+Indication,Relay Healthy lamp,Yes,To confirm,Work/lab,,24 V DC and lamp current,Pending,Driven by healthy relay NO contact
+Indication,Unhealthy / Alarm lamp,Yes,To confirm,Work/lab/buy,,24 V DC and lamp current,Pending,Driven by healthy relay NC contact
+Indication,Pickup lamp,Yes,To confirm,Work/lab,,24 V DC and lamp current,Pending,Driven by Opta Q3
+Indication,Trip lamp,Yes,To confirm,Work/lab,,24 V DC and lamp current,Pending,Driven by Opta Q4
+Indication,Blocked lamp,Yes,To confirm,Work/lab,,24 V DC and lamp current,Pending,Hardwired from selector BLOCK contact
+Load,Load lamp or resistor,Yes,To confirm,Lab/buy,,24 V rating current and power,Pending,Must not overheat
+Current simulation,0-10 V signal source,Yes,To confirm,Work/lab/buy,,Output limited to 0-10 V,Pending,Check with multimeter before Opta input
 Measurement,Multimeter,Yes,To confirm,Own/work,,Voltage and continuity checks,Pending,Required before power-up
