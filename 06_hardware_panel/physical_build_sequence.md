@@ -16,6 +16,8 @@ Build and test one layer at a time. Do not wire the whole panel in one go.
 
 \- \[ ] Lay out Opta, PSU, terminals, relays, lamps, pushbuttons, selector and load before wiring
 
+\- \[ ] Confirm selector has PERMIT and BLOCK contacts
+
 \- \[ ] Photograph parts layout
 
 \- \[ ] Mount DIN rail/backboard
@@ -30,7 +32,7 @@ Build and test one layer at a time. Do not wire the whole panel in one go.
 
 
 
-\- \[ ] Wire PSU + to fuse
+\- \[ ] Wire PSU + to F1 fuse
 
 \- \[ ] Wire fuse output to +24 V terminal rail
 
@@ -66,7 +68,9 @@ Build and test one layer at a time. Do not wire the whole panel in one go.
 
 
 
-\- \[ ] Wire Opta supply
+\- \[ ] Wire W032 from fused +24 V rail to Opta supply +
+
+\- \[ ] Wire W033 from 0 V rail to Opta supply -
 
 \- \[ ] Power on
 
@@ -76,7 +80,7 @@ Build and test one layer at a time. Do not wire the whole panel in one go.
 
 
 
-\## Step 5: Inputs
+\## Step 5: Inputs and Selector
 
 
 
@@ -84,23 +88,51 @@ Build and test one layer at a time. Do not wire the whole panel in one go.
 
 \- \[ ] Wire Reset PB to I2
 
-\- \[ ] Wire Permissive selector to I3
+\- \[ ] Wire selector PERMIT contact to I3
 
-\- \[ ] Wire 0–10 V signal source to I4 only after checking with multimeter
+\- \[ ] Wire selector BLOCK contact to Blocked lamp
 
-\- \[ ] Test inputs in CODESYS monitor before outputs are connected
+\- \[ ] Confirm selector in PERMIT makes I3 true
+
+\- \[ ] Confirm selector in BLOCK lights Blocked lamp
+
+\- \[ ] Do not connect analogue input yet
 
 
 
-\## Step 6: Outputs Without Load
+\## Step 6: 0–10 V Current Signal
 
 
 
-\- \[ ] Wire Q2 Relay Healthy lamp/relay
+\- \[ ] Confirm physical 0–10 V source
 
-\- \[ ] Wire Q3 Pickup lamp
+\- \[ ] Power/check 0–10 V source separately
 
-\- \[ ] Wire Q4 Trip lamp
+\- \[ ] Measure output with multimeter
+
+\- \[ ] Confirm output cannot exceed 10 V
+
+\- \[ ] Connect signal output to Opta I4
+
+\- \[ ] Connect signal 0 V/common reference correctly
+
+\- \[ ] Monitor analogue value in CODESYS before using trip logic
+
+
+
+\## Step 7: Outputs Without Load
+
+
+
+\- \[ ] Wire Q2 to healthy relay coil
+
+\- \[ ] Wire healthy relay NO contact to Relay Healthy lamp
+
+\- \[ ] Wire healthy relay NC contact to Unhealthy / Alarm lamp
+
+\- \[ ] Wire Q3 to Pickup lamp
+
+\- \[ ] Wire Q4 to Trip lamp
 
 \- \[ ] Download/monitor program
 
@@ -108,13 +140,29 @@ Build and test one layer at a time. Do not wire the whole panel in one go.
 
 
 
-\## Step 7: Trip Relay and Load
+\## Step 8: Hardwired Trip Permissive
 
 
 
-\- \[ ] Wire Q1 to trip relay coil
+\- \[ ] Wire selector PERMIT output to Opta Q1 common
 
-\- \[ ] Wire trip relay contact in series with load
+\- \[ ] Confirm selector in BLOCK removes +24 V feed from Q1 common
+
+\- \[ ] Confirm selector in PERMIT feeds Q1 common
+
+\- \[ ] Only continue once this is proven with a multimeter
+
+
+
+\## Step 9: Trip Relay and Load
+
+
+
+\- \[ ] Wire Q1 NO to trip relay coil
+
+\- \[ ] Wire trip relay coil return to 0 V
+
+\- \[ ] Wire load through trip relay NC contact
 
 \- \[ ] Confirm load current is safe
 
@@ -124,19 +172,7 @@ Build and test one layer at a time. Do not wire the whole panel in one go.
 
 
 
-\## Step 8: Blocked Lamp
-
-
-
-\- \[ ] Wire blocked lamp through selector auxiliary/contact
-
-\- \[ ] Confirm blocked lamp changes with selector
-
-\- \[ ] Confirm trip blocked in logic
-
-
-
-\## Step 9: Hardware FAT
+\## Step 10: Hardware FAT
 
 
 
@@ -150,7 +186,7 @@ Build and test one layer at a time. Do not wire the whole panel in one go.
 
 
 
-\## Step 10: Final Pack
+\## Step 11: Final Pack
 
 
 
